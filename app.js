@@ -5,7 +5,7 @@ const app = express();
 const path = require('path')
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
-const port = process.env.port || 3000
+let port = process.env.port || 3000
 let emoji = require('node-emoji')
 
 io.on('connection', (socket) => {
@@ -41,4 +41,9 @@ const publicDir = path.join(__dirname, './')
 
 app.use(express.static(publicDir))
 
+app.get('/', function (req, res) {
+  res.sendFile('./index.html', { root: __dirname });
+})
+
 server.listen(port);
+
