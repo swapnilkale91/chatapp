@@ -6,6 +6,7 @@ const path = require('path')
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const port = process.env.port || 3000
+let emoji = require('node-emoji')
 
 io.on('connection', (socket) => {
   socket.emit('sendmessage', 'Welcome ! You have joined the chat room');
@@ -13,7 +14,7 @@ io.on('connection', (socket) => {
 
   socket.on('submitmessage', (message, callback) => {
     if (!filter.isProfane(message)) {
-      io.emit('sendmessage', socket.username + ' : ' +  message);
+      io.emit('sendmessage', socket.username + ' : ' + emoji.emojify(message));
       callback('The message you sent was delivered');
     } else {
       callback('Do not use bad words !');
@@ -28,11 +29,11 @@ io.on('connection', (socket) => {
 
   socket.on('username', function (username) {
     socket.username = username;
-    io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+    io.emit('is_online', emoji.random().emoji + '<i>' + socket.username + ' join the chat..</i>');
   });
 
   socket.on('disconnect', () => {
-    io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
+    io.emit('is_online', emoji.random().emoji + '<i>' + socket.username + ' left the chat..</i>');
   })
 });
 
