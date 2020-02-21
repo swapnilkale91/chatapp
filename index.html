@@ -1,0 +1,30 @@
+<!-- <html>
+    <head>
+    </head>
+    <body>Chat App Server!</body></br>
+    <button id="incrementCount" onClick="incrementCount()">+1</button></br>
+    <form onsubmit="submitMessage();return false">
+        <input placeholder="Message" id="message"></input>
+        <button type="submit">Submit</button>
+    </form>
+    <button id = "send-location" onClick="sendLocation()">Send my location</button><br/>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/js/chat.js"></script>
+</html>  -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Group Chat on Node.js</title>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./public/js/chat.js"></script>
+    <link rel="stylesheet" href="./public/css/chat.css">
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form onsubmit="submitMessage();return false">
+      <input id="message" autocomplete="off" autofocus="on" placeholder="type your message here..." /><button>Send</button>
+    </form>
+  </body>
+</html>
