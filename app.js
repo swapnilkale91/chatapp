@@ -1,13 +1,13 @@
 const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000
+const server = app.listen(PORT);
+const io = require('socket.io').listen(server);
+
 const Filter = require('bad-words');
 const filter = new Filter();
-const app = express();
+const emoji = require('node-emoji');
 const path = require('path');
-let port = process.env.PORT || 3000
-let emoji = require('node-emoji')
-
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
   socket.emit('sendmessage', 'Welcome ! You have joined the chat room');
@@ -45,6 +45,3 @@ app.use(express.static(publicDir))
 app.get('/', function (req, res) {
   res.sendFile('./index.html', { root: __dirname });
 })
-
-server.listen(port);
-
