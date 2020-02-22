@@ -1,10 +1,9 @@
 const express = require('express');
 const Filter = require('bad-words');
 const filter = new Filter();
-const app = express();
+const server = express();
 const path = require('path')
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const io = socketIO(server);
 let port = process.env.port || 3000
 let emoji = require('node-emoji')
 
