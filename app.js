@@ -1,11 +1,13 @@
 const express = require('express');
 const Filter = require('bad-words');
 const filter = new Filter();
-const server = express();
-const path = require('path')
-const io = socketIO(server);
+const app = express();
+const path = require('path');
 let port = process.env.port || 3000
 let emoji = require('node-emoji')
+
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
   socket.emit('sendmessage', 'Welcome ! You have joined the chat room');
