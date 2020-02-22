@@ -5,12 +5,20 @@
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./src/chat.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="src/chat.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form onsubmit="submitMessage();return false">
-      <input id="message" autocomplete="off" autofocus="on" placeholder="type your message here..." /><button>Send</button>
-    </form>
+    <div class="container-fluid">
+      <ul class="list-group list-group-flush" id="messages"></ul>
+    </div>
+      <form onsubmit="submitMessage();return false">
+        <div class="d-flex flex-row">
+          <input class="form-control mr-auto p-8" id="message" autocomplete="off" autofocus="on" placeholder="Type your message here..." />
+          <div class="p-2"></div>
+          <button class="btn btn-secondary bt-sm p-2" type="button">Send</button>
+        </div>
+      </form>
   </body>
 </html>

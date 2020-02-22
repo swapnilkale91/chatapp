@@ -2,18 +2,16 @@ const socket = io();
 
 socket.on('sendmessage', (message) => {
     console.log(message);
-    $('#messages').append($('<li>').html(message));
+    $('#messages').append($('<li class="list-group-item .font-weight-italic">').html(message));
 })
 
 socket.on('is_online', function (username) {
-    $('#messages').append($('<li>').html(username));
+    $('#messages').append($('<li class="list-group-item .font-weight-italic">').html(username));
 });
 
 var username = prompt('Please tell me your name');
 username = !username ? 'Anonymous' : username;
 socket.emit('username', username);
-
-
 
 function submitMessage() {
     let message = document.getElementById("message").value;
@@ -21,6 +19,11 @@ function submitMessage() {
     socket.emit('submitmessage', message, (callbackmessage) => {
         console.log(callbackmessage);
     })
+
+    $("html, body").animate({ 
+        scrollTop: $( 
+          'html, body').get(0).scrollHeight 
+    }); 
 }
 
 function sendLocation() {
