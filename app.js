@@ -3,7 +3,7 @@ const Filter = require('bad-words');
 const filter = new Filter();
 const app = express();
 const path = require('path');
-let port = process.env.port || 3000
+let port = process.env.PORT || 3000
 let emoji = require('node-emoji')
 
 const server = require('http').Server(app);
