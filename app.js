@@ -16,9 +16,8 @@ io.on('connection', (socket) => {
   socket.on('submitmessage', (message, callback) => {
     if (!filter.isProfane(message)) {
       io.emit('sendmessage', socket.username + ' : ' + emoji.emojify(message));
-      callback('The message you sent was delivered');
     } else {
-      callback('Do not use bad words !');
+      callback('Mind your words !');
       io.emit('sendmessage', socket.username + ' : ' + filter.clean(message));
     }
   })
@@ -30,11 +29,15 @@ io.on('connection', (socket) => {
 
   socket.on('username', function (username) {
     socket.username = username;
-    io.emit('is_online', emoji.random().emoji + '<i>' + socket.username + ' join the chat..</i>');
+    io.emit('is_online', '<i>' + socket.username + ' join the chat..</i>');
   });
 
+  socket.on('randomEmoji', (callback) => {
+    callback(emoji.random().emoji);
+  })
+
   socket.on('disconnect', () => {
-    io.emit('is_online', emoji.random().emoji + '<i>' + socket.username + ' left the chat..</i>');
+    io.emit('is_online', '<i>' + socket.username + ' left the chat..</i>');
   })
 });
 

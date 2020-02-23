@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
+    <img src="src/img/bg.jpg" id="bg" alt="">
     <div class="container-fluid">
       <ul class="list-group list-group-flush overflow-auto" id="messages" ></ul>
     </div>
@@ -17,9 +18,9 @@
         <div class="d-flex flex-row">
           <input class="form-control mr-auto p-2" id="message" autocomplete="off" autofocus="on" placeholder="Type your message here..." />
           <div class="p-2"></div>
-          <div class="p-2"></div>
-          <button class="btn btn-secondary bt-sm" type="button">Send</button>
-        </div>
+          <button class="btn btn-secondary" value="submit" type="submit">Send</button>
       </form>
+      <!-- <button class="btn btn-primary bt-sm" type="button" onclick="randomEmote()">Emo</button> -->
+    </div>
   </body>
 </html>

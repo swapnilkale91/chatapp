@@ -1,29 +1,51 @@
 const socket = io();
+let username = '';
 
 socket.on('sendmessage', (message) => {
-    console.log(message);
-    $('#messages').append($('<li class="list-group-item .font-weight-italic">').html(message));
+    $('#messages').append($('<li class="others py-4">').html(message));
+
+    $("html, body").animate({ 
+        scrollTop: $( 
+          'html, body').get(0).scrollHeight 
+    }); 
 })
 
 socket.on('is_online', function (username) {
-    $('#messages').append($('<li class="list-group-item .font-weight-italic">').html(username));
+    $('#messages').append($('<li class="list-group-item .font-weight-italic py-4">').html(username));
 });
 
-var username = prompt('Please tell me your name');
+socket.on('istyping', function (message) {
+  //  $('#typing').text(message)
+    $('#typing').text(message);
+    setTimeout(function(){
+        $('#typing').text('Chat Room');
+    }, 200);
+});
+
+while(!username){
+    username = prompt('Please tell me your name');
+};
 username = !username ? 'Anonymous' : username;
 socket.emit('username', username);
 
+window.onbeforeunload = function() {
+    return true;
+};
+
 function submitMessage() {
     let message = document.getElementById("message").value;
+    if(!message) return;
     document.getElementById("message").value = "";
     socket.emit('submitmessage', message, (callbackmessage) => {
-        console.log(callbackmessage);
+        alert(callbackmessage);
     })
 
     $("html, body").animate({ 
         scrollTop: $( 
           'html, body').get(0).scrollHeight 
     }); 
+
+    $('#messages').append($('<li class="me py-4">').html(username + ': ' +message));
 }
 
 function sendLocation() {
@@ -38,4 +60,8 @@ function sendLocation() {
             console.log(callbackmessage);
         })
     })
+}
+
+function isTyping() {
+    socket.emit('istyping', username);
 }
