@@ -45,7 +45,7 @@ function submitMessage() {
           'html, body').get(0).scrollHeight 
     }); 
 
-    $('#messages').append($('<li class="me py-4">').html(username + ': ' +message));
+    $('#messages').append($('<li class="me py-4">').html(message));
 }
 
 function sendLocation() {
