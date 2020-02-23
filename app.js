@@ -11,7 +11,7 @@ const path = require('path');
 
 io.on('connection', (socket) => {
   socket.emit('sendmessage', 'Welcome ! You have joined the chat room');
-  socket.broadcast.emit('sendmessage', 'A new user has joined the chat room');
+  socket.broadcast.emit('sendmessage', 'A new user is trying to join the chat room');
 
   socket.on('submitmessage', (message, callback) => {
     if (!filter.isProfane(message)) {

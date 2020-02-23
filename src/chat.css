@@ -22,3 +22,28 @@ form {
 .container-fluid {
     padding-bottom: 60px;
 }
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+    form {
+        position: fixed;
+        bottom: 0;
+        width: 98%; 
+        height: 150px;
+        padding: 12px;
+    } 
+
+    .list-group-item {
+      display: block;
+      font-size: 40px;
+      height: 150px;
+    }
+
+    #message { 
+      height: 100px;
+    }
+}
+
