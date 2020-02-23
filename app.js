@@ -15,10 +15,10 @@ io.on('connection', (socket) => {
 
   socket.on('submitmessage', (message, callback) => {
     if (!filter.isProfane(message)) {
-      io.emit('sendmessage', socket.username + ' : ' + emoji.emojify(message));
+      socket.broadcast.emit('sendmessage', socket.username + ': ' + emoji.emojify(message));
     } else {
       callback('Mind your words !');
-      io.emit('sendmessage', socket.username + ' : ' + filter.clean(message));
+      socket.broadcast.emit('sendmessage', socket.username + ': ' + filter.clean(message));
     }
   })
 
@@ -38,6 +38,10 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     io.emit('is_online', '<i>' + socket.username + ' left the chat..</i>');
+  })
+
+  socket.on('istyping', (username) => {
+    socket.broadcast.emit('istyping', username + ' is typing...');
   })
 });
 

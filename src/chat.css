@@ -8,14 +8,35 @@ form button { width: 9%; background: rgb(137, 167, 177); border: none; padding: 
 #messages li:nth-child(odd) { background: #eee; }
 */
 
+#typing {
+    z-index: 9999;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-weight: 200;
+    border-radius: 60px;
+}
+
 #messages {
      opacity: 70%;
 }
 
 #messages li { 
-    padding: 5px 10px; 
-    font-size: larger; 
     font-family: "Comic Sans MS", cursive, sans-serif;
+    font-weight: 550;
+    font-size: unset;
+    display: table;
+    padding: 20px;
+    border-radius: 60px;
+    background: #eee;
+    clear: both;
+    margin: 0.8px;
+}
+
+.others {
+    float: left;
+}
+
+.me {
+    float: right;
 }
 
 form {
@@ -24,14 +45,6 @@ form {
     width: 98%; 
     padding: 12px;
 } 
-
-#messages li:nth-child(odd) { 
-    background: #eee; 
-}
-
-.container-fluid {
-    padding-bottom: 60px;
-}
 
 #bg {
     position: fixed; 
