@@ -11,7 +11,7 @@ socket.on('sendmessage', (message) => {
 })
 
 socket.on('is_online', function (username) {
-    $('#messages').append($('<li class="list-group-item .font-weight-italic py-4">').html(username));
+    $('#messages').append($('<li class="py-4">').html(username));
 });
 
 socket.on('istyping', function (message) {

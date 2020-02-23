@@ -10,12 +10,19 @@ form button { width: 9%; background: rgb(137, 167, 177); border: none; padding: 
 
 #typing {
     z-index: 9999;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: monospace;
     font-weight: 200;
     border-radius: 60px;
     font-size: xx-large;
+    padding-left: 4%
 }
 
+#noofusers {
+    font-family: monospace;
+    font-weight: 200;
+    float: right;
+    padding-right: 4%
+}
 #messages {
      opacity: 70%;
 }
@@ -80,6 +87,11 @@ form {
         border-radius: 60px;
         font-size: xx-large;
         padding: 15px;
+        width: 85%;
+    }
+
+    #messages {
+        padding: 0;
     }
 
     #messages li { 
@@ -96,6 +108,7 @@ form {
         line-height: 35px;
         text-align: center;
         margin: .5em 0 .5em 0;     
+        width: 15%;
       }
 
       nav {
